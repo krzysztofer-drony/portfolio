@@ -331,5 +331,24 @@
             .then(res => { if (res.ok) { status.style.display = "block"; form.style.display = "none"; } });
         });
     </script>
+    <div id="cookie-banner" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #222; color: #fff; padding: 15px; text-align: center; font-size: 14px; z-index: 1000; font-family: sans-serif; box-shadow: 0 -2px 10px rgba(0,0,0,0.3);">
+    Ta strona używa plików cookies, aby ułatwić Ci korzystanie z naszych usług. 
+    <a href="polityka.html" style="color: #3498db; text-decoration: underline; margin-left: 5px;">Dowiedz się więcej</a>
+    <button onclick="acceptCookies()" style="margin-left: 15px; padding: 8px 20px; background: #3498db; border: none; color: white; cursor: pointer; border-radius: 4px; font-weight: bold;">Rozumiem</button>
+</div>
+
+<script>
+    function acceptCookies() {
+        document.getElementById('cookie-banner').style.display = 'none';
+        localStorage.setItem('cookiesAccepted', 'true');
+    }
+
+    // Ukryj baner, jeśli użytkownik już go zaakceptował wcześniej
+    window.onload = function() {
+        if (localStorage.getItem('cookiesAccepted') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    }
+</script>
 </body>
 </html>
